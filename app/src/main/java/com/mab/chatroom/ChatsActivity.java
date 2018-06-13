@@ -60,6 +60,7 @@ public class ChatsActivity extends AppCompatActivity {
                     noMessage.setText(R.string.no_message);
                 }
                 else {
+                    noMessage.setVisibility(View.INVISIBLE);
                     chats.clear();
                     chats.addAll(chatResponse.getChats());
                     chatAdapter.notifyDataSetChanged();
@@ -83,7 +84,7 @@ public class ChatsActivity extends AppCompatActivity {
                 }
                 else {
 
-
+                    noMessage.setVisibility(View.INVISIBLE);
                     Chat chat = new Chat();
                     chat.setUsername(username);
                     chat.setText(message.getText().toString());
