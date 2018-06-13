@@ -12,6 +12,8 @@ public class Chat {
 
     public Chat(){
 
+
+
     }
 
     public String getId() {

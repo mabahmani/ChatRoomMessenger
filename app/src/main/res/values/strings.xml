@@ -19,4 +19,5 @@
     <string name="no_message">اینجا فعلا خبری نیست ...</string>
     <string name="room_name">نام چت روم</string>
     <string name="creat_room">ساخت چت روم</string>
+    <string name="creat_room_successful">چت روم با موفقیت ایجاد شد!</string>
 </resources>

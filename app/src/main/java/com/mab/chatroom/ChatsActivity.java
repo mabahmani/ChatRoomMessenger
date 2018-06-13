@@ -63,6 +63,7 @@ public class ChatsActivity extends AppCompatActivity {
                     chats.clear();
                     chats.addAll(chatResponse.getChats());
                     chatAdapter.notifyDataSetChanged();
+                    recyclerView.scrollToPosition(chats.size() - 1);
                 }
             }
 
@@ -81,10 +82,19 @@ public class ChatsActivity extends AppCompatActivity {
                 if (message.getText() == null) {
                 }
                 else {
+
+
+                    Chat chat = new Chat();
+                    chat.setUsername(username);
+                    chat.setText(message.getText().toString());
+                    chats.add(chat);
+                    chatAdapter.notifyDataSetChanged();
+                    recyclerView.scrollToPosition(chats.size() - 1);
+
                     ChatRoomAPI.sendMessageCallBack sendMessageCallBack = new ChatRoomAPI.sendMessageCallBack() {
                         @Override
                         public void onResponse(SendMessageResponse sendMessageResponse) {
-                            Toast.makeText(getApplicationContext(),"Message Sent"+sendMessageResponse.getCreatedAt(),Toast.LENGTH_LONG).show();
+                            message.setText("");
                         }
 
                         @Override

@@ -1,9 +1,10 @@
 package com.mab.chatroom.Data;
 
-import com.mab.chatroom.Model.Chat;
 import com.mab.chatroom.Model.ChatResponse;
+import com.mab.chatroom.Model.CreateRoomResponse;
 import com.mab.chatroom.Model.Room;
 import com.mab.chatroom.Model.RoomId;
+import com.mab.chatroom.Model.RoomName;
 import com.mab.chatroom.Model.RoomResponse;
 import com.mab.chatroom.Model.SendMessage;
 import com.mab.chatroom.Model.SendMessageResponse;
@@ -57,6 +58,13 @@ public interface ChatRoomAPI {
             @Body SendMessage sendMessage
     );
 
+    @Headers("X-Backtory-Object-Storage-Id:5a1d4b3de4b03ffa047badf5")
+    @POST("object-storage/classes/Room")
+    Call<CreateRoomResponse> createRoom(
+            @Header("Authorization") String accessToken,
+            @Body RoomName roomName
+    );
+
     interface RegisterUserCallBack{
         void onResponse(boolean successful, String errorMessage, User user);
         void onFailure(String cause);
@@ -79,6 +87,11 @@ public interface ChatRoomAPI {
 
     interface sendMessageCallBack{
         void onResponse(SendMessageResponse sendMessageResponse);
+        void onFailure(String cause);
+    }
+
+    interface createRoomCallBack{
+        void onResponse(CreateRoomResponse createRoomResponse);
         void onFailure(String cause);
     }
 }

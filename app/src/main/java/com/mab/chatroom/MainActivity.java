@@ -10,11 +10,8 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import com.mab.chatroom.Data.RegisterUserController;
 import com.mab.chatroom.Data.UserPreferenceManager;
 import com.mab.chatroom.Model.User;
 
@@ -44,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CreateRoomDialog createRoomDialog = new CreateRoomDialog(MainActivity.this);
-                createRoomDialog.show();
+                Intent intent = new Intent(MainActivity.this,CreateRoomActivity.class);
+                MainActivity.this.startActivity(intent);
+                finish();
             }
         });
 

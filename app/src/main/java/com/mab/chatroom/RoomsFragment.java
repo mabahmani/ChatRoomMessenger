@@ -41,7 +41,6 @@ public class RoomsFragment extends android.support.v4.app.Fragment {
         super.onViewCreated(view, savedInstanceState);
         findViews(view);
         initRoomsList();
-
         ChatRoomAPI.getRoomsCallBack getRoomsCallBack = new ChatRoomAPI.getRoomsCallBack() {
             @Override
             public void onResponse(List<Room> inputRooms) {
@@ -80,7 +79,14 @@ public class RoomsFragment extends android.support.v4.app.Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(roomAdapter);
     }
+
     private void findViews(View view){
         recyclerView = view.findViewById(R.id.rooms_list);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        roomAdapter.notifyDataSetChanged();
     }
 }
