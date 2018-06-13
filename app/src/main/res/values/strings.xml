@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">ChatRoom</string>
+    <string name="username">نام کاربری</string>
+    <string name="password">رمز عبور</string>
+    <string name="login">ورود به حساب کاربری</string>
+    <string name="create_account_signup">حساب کاربری ندارید؟ ثبت نام</string>
+    <string name="already_have_an_account">قبلا حساب کاربری داشتید؟</string>
+    <string name="signup">ایجاد حساب کاربری</string>
+    <string name="email_address">ایمیل</string>
+    <string name="first_name">نام</string>
+    <string name="last_name">نام خانوادگی</string>
+    <string name="username_password_rquiered">نام کاربری و رمزعبور الزامی است.</string>
+    <string name="username_requierd">نام کاربری الزامی است.</string>
+    <string name="password_requierd">پسورد الزامی است.</string>
+    <string name="email_requierd">ایمیل الزامی است.</string>
+    <string name="logout">خروج</string>
+    <string name="write_your_message">پیام خود را بنویسید ...</string>
+    <string name="unknown">Unknown</string>
+    <string name="no_message">اینجا فعلا خبری نیست ...</string>
+    <string name="room_name">نام چت روم</string>
+    <string name="creat_room">ساخت چت روم</string>
+</resources>
