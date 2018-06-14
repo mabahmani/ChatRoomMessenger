@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -30,6 +31,8 @@ public class RoomsFragment extends android.support.v4.app.Fragment {
     private RoomAdapter roomAdapter;
     private List<Room> rooms = new ArrayList<>();
 
+    private ProgressBar progressBar;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -41,12 +44,14 @@ public class RoomsFragment extends android.support.v4.app.Fragment {
         super.onViewCreated(view, savedInstanceState);
         findViews(view);
         initRoomsList();
+        progressBar.setVisibility(View.VISIBLE);
         ChatRoomAPI.getRoomsCallBack getRoomsCallBack = new ChatRoomAPI.getRoomsCallBack() {
             @Override
             public void onResponse(List<Room> inputRooms) {
                 rooms.clear();
                 rooms.addAll(inputRooms);
                 roomAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -82,6 +87,7 @@ public class RoomsFragment extends android.support.v4.app.Fragment {
 
     private void findViews(View view){
         recyclerView = view.findViewById(R.id.rooms_list);
+        progressBar = view.findViewById(R.id.progress_bar);
     }
 
     @Override

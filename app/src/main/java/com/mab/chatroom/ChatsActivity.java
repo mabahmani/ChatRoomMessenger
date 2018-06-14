@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class ChatsActivity extends AppCompatActivity {
     private TextView message;
     private TextView noMessage;
     private ImageView sendIcon;
+    private ProgressBar progressBar;
 
 
     private ChatAdapter chatAdapter;
@@ -47,7 +49,7 @@ public class ChatsActivity extends AppCompatActivity {
 
         findViews();
         initChatList();
-
+        progressBar.setVisibility(View.VISIBLE);
         Intent intent = getIntent();
         Gson gson = new Gson();
         roomId = gson.fromJson(intent.getStringExtra("roomId"),RoomId.class);
@@ -55,6 +57,7 @@ public class ChatsActivity extends AppCompatActivity {
         ChatRoomAPI.getChatsCallBack getChatsCallBack = new ChatRoomAPI.getChatsCallBack() {
             @Override
             public void onResponse(ChatResponse chatResponse) {
+                progressBar.setVisibility(View.INVISIBLE);
                 if (chatResponse.getChats().isEmpty()){
                     noMessage.setVisibility(View.VISIBLE);
                     noMessage.setText(R.string.no_message);
@@ -122,5 +125,6 @@ public class ChatsActivity extends AppCompatActivity {
         message = findViewById(R.id.input_message);
         sendIcon = findViewById(R.id.send_icon);
         noMessage = findViewById(R.id.no_message);
+        progressBar = findViewById(R.id.progress_bar);
     }
 }
