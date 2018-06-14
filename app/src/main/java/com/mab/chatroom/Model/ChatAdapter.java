@@ -47,17 +47,16 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         else {
             if (chats.get(position).getUsername().equals(username)) {
                 holder.messageLayout.setGravity(Gravity.END | Gravity.RIGHT);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    holder.messageHolder.setBackground(context.getDrawable(R.drawable.dark_gray));
-
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    holder.messageHolder.setBackground(context.getResources().getDrawable(R.drawable.dark_gray));
                 }
                 holder.username.setText(chats.get(position).getUsername());
                 holder.text.setText(chats.get(position).getText());
             }
             else {
                 holder.messageLayout.setGravity(Gravity.START | Gravity.LEFT);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    holder.messageHolder.setBackground(context.getDrawable(R.drawable.gray));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    holder.messageHolder.setBackground(context.getResources().getDrawable(R.drawable.gray));
                 }
                 holder.username.setText(chats.get(position).getUsername());
                 holder.text.setText(chats.get(position).getText());
