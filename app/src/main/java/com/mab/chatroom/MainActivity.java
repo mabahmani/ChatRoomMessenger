@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private ViewPager viewPager2;
     private FloatingActionButton floatingActionButton;
     private FragmentPagerAdapter fragmentPagerAdapter;
     private AuthFragmentPagerAdapter authFragmentPagerAdapter;
@@ -52,21 +53,24 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            getFragmentManager().popBackStack();
+            viewPager.setVisibility(View.GONE);
             openMainFragment();
         }
     };
 
     private void openAuthFragment(){
+        floatingActionButton.setVisibility(View.GONE);
+        viewPager.setVisibility(View.VISIBLE);
         authFragmentPagerAdapter = new AuthFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(authFragmentPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
 
     private void openMainFragment(){
+        floatingActionButton.setVisibility(View.VISIBLE);
         fragmentPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(fragmentPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+        viewPager2.setAdapter(fragmentPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager2);
     }
 
 
@@ -88,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
     private void findViews(){
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
+        viewPager2 = findViewById(R.id.view_pager2);
         floatingActionButton = findViewById(R.id.new_chat_room_button);
     }
 }

@@ -55,7 +55,6 @@ public class LoginFragment extends android.support.v4.app.Fragment {
                                 LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(
                                         new Intent("login_successful")
                                 );
-
                             }
                         }
 
